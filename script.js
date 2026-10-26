@@ -299,50 +299,86 @@ document.querySelector("#datos-cotizacion")
 
     window.location.href = enlace;
   });
-  // Aviso informativo sobre cookies y almacenamiento.
+   // Preferencias de privacidad.
 (() => {
-  const claveAviso = "tv-aviso-privacidad-v1";
+  const clave = "tv-preferencias-v2";
 
   try {
-    if (localStorage.getItem(claveAviso) === "visto") return;
-  } catch {
-    // El aviso también funciona si el almacenamiento está bloqueado.
-  }
+    if (localStorage.getItem(clave)) return;
+  } catch {}
 
   const aviso = document.createElement("aside");
   aviso.className = "aviso-cookies";
   aviso.setAttribute("aria-labelledby", "titulo-cookies");
 
   aviso.innerHTML = `
-    <div class="aviso-cookies-texto">
-      <h2 id="titulo-cookies">Tu privacidad</h2>
+    <h2 id="titulo-cookies">¿Aceptas todas las cookies?</h2>
+
+    <p>
+      Actualmente no utilizamos cookies de publicidad ni
+      estadísticas. Solo guardamos tu elección en este navegador.
+      El diseño carga fuentes de Google.
+    </p>
+
+    <a href="cookies.html">Saber más acerca de las cookies</a>
+
+    <div id="detalle-cookies" hidden>
       <p>
-        No utilizamos cookies de publicidad ni de estadísticas.
-        Guardamos en tu navegador únicamente que has cerrado
-        este aviso. El diseño carga fuentes de Google.
+        <strong>Preferencia del aviso:</strong>
+        permite recordar tu elección.
       </p>
-      <a href="cookies.html">Consultar política de cookies</a>
+      <p>
+        <strong>Cookies opcionales:</strong>
+        ninguna instalada actualmente.
+      </p>
+      <button type="button" class="boton boton-secundario"
+        id="guardar-cookies">
+        Guardar preferencias
+      </button>
     </div>
 
-    <button
-      type="button"
-      class="boton boton-principal"
-      id="cerrar-aviso-cookies"
-    >
-      Entendido
-    </button>
+    <div class="acciones-cookies">
+      <button type="button" class="boton boton-secundario"
+        id="configurar-cookies"
+        aria-expanded="false"
+        aria-controls="detalle-cookies">
+        Configurar
+      </button>
+
+      <button type="button" class="boton boton-principal"
+        id="aceptar-cookies">
+        Aceptar todas
+      </button>
+    </div>
   `;
 
   document.body.append(aviso);
 
-  aviso.querySelector("#cerrar-aviso-cookies")
-    .addEventListener("click", () => {
-      try {
-        localStorage.setItem(claveAviso, "visto");
-      } catch {
-        // Se cierra durante esta visita aunque no pueda recordarse.
-      }
+  function guardar(eleccion) {
+    try {
+      localStorage.setItem(clave, JSON.stringify({
+        eleccion,
+        opcionales: [],
+        fecha: new Date().toISOString()
+      }));
+    } catch {}
 
-      aviso.remove();
+    aviso.remove();
+  }
+
+  aviso.querySelector("#configurar-cookies")
+    .addEventListener("click", (evento) => {
+      const detalle = aviso.querySelector("#detalle-cookies");
+      detalle.hidden = !detalle.hidden;
+      evento.currentTarget.setAttribute(
+        "aria-expanded",
+        String(!detalle.hidden)
+      );
     });
+
+  aviso.querySelector("#guardar-cookies")
+    .addEventListener("click", () => guardar("configurada"));
+
+  aviso.querySelector("#aceptar-cookies")
+    .addEventListener("click", () => guardar("aceptar-todas"));
 })();

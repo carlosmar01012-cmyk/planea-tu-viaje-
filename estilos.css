@@ -1006,3 +1006,26 @@ h1 span {
   line-height: 1.6;
   text-align: center;
 }
+.acciones-cookies {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.acciones-cookies .boton {
+  margin: 0;
+  padding-inline: 12px;
+}
+
+#detalle-cookies {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--borde);
+}
+
+@media (max-width: 380px) {
+  .acciones-cookies {
+    grid-template-columns: 1fr;
+  }
+}
