@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Explora rutas de bus por Colombia y prepara tu próximo viaje."
+  >
+  <title>planea tu viaje | Viaja por Colombia</title>
+  <link rel="stylesheet" href="estilos.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="encabezado">
+    <div class="contenedor navegacion">
+      <a class="logo" href="index.html" aria-label="Pasajes en Bus, inicio">
+  <span class="logo-icono" aria-hidden="true">
+    <svg
+      viewBox="0 0 32 32"
+      width="28"
+      height="28"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect x="7" y="4" width="18" height="22" rx="4"/>
+      <path d="M8 15h16M16 7v8M12 8h8"/>
+      <path d="M5 10v6M27 10v6"/>
+      <circle cx="11.5" cy="21" r="1" fill="currentColor"/>
+      <circle cx="20.5" cy="21" r="1" fill="currentColor"/>
+      <path d="M10 26v3M22 26v3"/>
+    </svg>
+  </span>
+   <span class="logo-nombre">
+  planea<span>tu viaje</span>
+</span>
+</a>
+
+      <nav aria-label="Planea tu Viaje, inicio">
+        <a href="#inicio">Inicio</a>
+        <a href="#buscador">Buscar pasajes</a>
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#nosotros">quienes somos</a>
+        <a class="enlace-contacto" href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-contenido">
+        <div class="hero-texto">
+          <span class="etiqueta">TU PRÓXIMA HISTORIA EMPIEZA EN LA RUTA</span>
+          <h1>Colombia te espera.<br><span>Vamos a recorrerla.</span></h1>
+           <p>
+  Te ayudamos a explorar rutas de bus por Colombia
+  y a encontrar información para planear tu próximo viaje.
+  Elige tu origen y destino para empezar.
+</p>
+          <a class="boton boton-principal" href="#buscador">
+            Encuentra tu próxima ruta →
+          </a>
+
+          <div class="hero-detalles">
+            <span>Ciudades colombianas</span>
+            <span>Precios en pesos</span>
+            <span>Todo en un solo lugar</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <span class="visual-sol"></span>
+          <span class="visual-montana montana-fondo"></span>
+          <span class="visual-montana montana-frente"></span>
+          <div class="tarjeta-ruta">
+            <span>UN VIAJE, MUCHAS HISTORIAS</span>
+            <strong>Bogotá → Medellín</strong>
+            <span>Descubre Colombia por carretera</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion-buscador" id="buscador" aria-labelledby="titulo-buscador">
+      <div class="contenedor">
+        <form class="buscador" id="formulario-busqueda">
+          <div class="buscador-encabezado">
+            <div>
+              <span class="etiqueta">EMPIEZA AQUÍ</span>
+              <h2 id="titulo-buscador">¿A dónde quieres ir?</h2>
+            </div>
+            <span class="aviso-demo">Versión de demostración</span>
+          </div>
+
+          <div class="buscador-campos">
+            <div class="campo">
+              <label for="origen">Origen</label>
+              <select id="origen" name="origen" required>
+                <option value="">¿Desde dónde sales?</option>
+                <option>Bogotá</option>
+                <option>Medellín</option>
+                <option>Cali</option>
+                <option>Cartagena</option>
+                <option>Barranquilla</option>
+                <option>Bucaramanga</option>
+                <option>Pereira</option>
+                <option>Santa Marta</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="destino">Destino</label>
+              <select id="destino" name="destino" required>
+                <option value="">¿A dónde vamos?</option>
+                <option>Bogotá</option>
+                <option>Medellín</option>
+                <option>Cali</option>
+                <option>Cartagena</option>
+                <option>Barranquilla</option>
+                <option>Bucaramanga</option>
+                <option>Pereira</option>
+                <option>Santa Marta</option>
+              </select>
+            </div>
+
+            <div class="campo">
+              <label for="fecha-ida">Fecha de ida</label>
+              <input type="date" id="fecha-ida" name="fechaIda" required>
+            </div>
+
+            <div class="campo">
+              <label for="fecha-vuelta">Regreso <span>(opcional)</span></label>
+              <input type="date" id="fecha-vuelta" name="fechaVuelta">
+            </div>
+
+            <button class="boton boton-principal" type="submit">
+              Buscar pasajes →
+            </button>
+          </div>
+
+          <p class="nota-buscador">
+            Explora el funcionamiento con horarios y precios de ejemplo.
+            Esta versión no realiza reservas ni cobros.
+          </p>
+          <p id="mensaje-busqueda" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="seccion destinos" aria-labelledby="titulo-destinos">
+      <div class="contenedor">
+        <span class="etiqueta">INSPIRACIÓN PARA TU PRÓXIMA ESCAPADA</span>
+        <h2 id="titulo-destinos">Un destino para cada plan.</h2>
+        <p class="descripcion-seccion">
+          Montañas, cultura o brisa del mar. Tú eliges el camino.
+        </p>
+
+        <div class="rejilla-destinos">
+          <article class="tarjeta-destino destino-medellin">
+            <span class="destino-numero">01 / ANTIOQUIA</span>
+            <div>
+              <h3>Medellín</h3>
+              <p>Montañas, cultura y nuevos encuentros.</p>
+              <a href="#buscador">Explorar ruta <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="tarjeta-destino destino-cartagena">
+            <span class="destino-numero">02 / BOLÍVAR</span>
+            <div>
+              <h3>Cartagena</h3>
+              <p>Calles llenas de color y aire del Caribe.</p>
+              <a href="#buscador">Explorar ruta <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+
+          <article class="tarjeta-destino destino-bogota">
+            <span class="destino-numero">03 / BOGOTÁ D. C.</span>
+            <div>
+              <h3>Bogotá</h3>
+              <p>Una capital con mucho por descubrir.</p>
+              <a href="#buscador">Explorar ruta <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion funcionamiento" id="como-funciona">
+  <div class="contenedor">
+    <span class="etiqueta">PLANEA TU PRÓXIMO VIAJE</span>
+    <h2>Solicita tu cotización en tres pasos.</h2>
+
+    <div class="rejilla-pasos">
+      <article class="paso">
+        <span class="paso-numero">01</span>
+        <h3>Elige tu ruta</h3>
+        <p>
+          Indica tu ciudad de origen, destino y las fechas
+          en las que deseas viajar.
+        </p>
+      </article>
+
+      <article class="paso">
+        <span class="paso-numero">02</span>
+        <h3>Completa tu solicitud</h3>
+        <p>
+          Ingresa tus datos, la cantidad de pasajeros
+          y autoriza el tratamiento de la información.
+        </p>
+      </article>
+
+      <article class="paso">
+        <span class="paso-numero">03</span>
+        <h3>Envíala por correo</h3>
+        <p>
+          Revisa y envía el mensaje desde tu aplicación de correo.
+          La tarifa y disponibilidad se confirmarán posteriormente.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+     <section class="seccion nosotros" id="nosotros">
+  <div class="contenedor nosotros-contenido">
+    <div>
+      <span class="etiqueta">QUIÉNES SOMOS</span>
+      <h2>Una guía para encontrar tu próximo camino.</h2>
+    </div>
+
+    <div>
+      <p>
+        planea tu viaje es una guía independiente creada para
+        ayudarte a buscar pasajes de bus hacia los destinos que
+        necesitas en Colombia. Queremos facilitar tu búsqueda
+        con información clara para que puedas planear tu viaje.
+      </p>
+
+      <p>
+        Este proyecto está a cargo de Víctor Alfonso Cruz Amortegui,
+        en Bogotá, Colombia. Nuestro propósito es orientarte
+        al explorar rutas y opciones de transporte.
+      </p>
+
+      <p>
+  Puedes enviarnos una solicitud de cotización indicando
+  tu ruta y las fechas del viaje. El envío no confirma una
+  reserva. La tarifa, disponibilidad y condiciones del servicio
+  deben confirmarse antes de cualquier compra.
+  Este sitio no recibe pagos ni emite tiquetes.
+</p>
+    </div>
+  </div>
+</section>
+
+     <section class="seccion contacto" id="contacto">
+  <div class="contenedor contacto-contenido">
+    <span class="etiqueta">CONTACTO</span>
+    <h2>Hablemos de tu próximo viaje.</h2>
+
+    <p>
+      ¿Tienes preguntas sobre cómo solicitar una cotización?
+      Escríbenos indicando tu origen, destino y fecha del viaje.
+    </p>
+
+    <a
+      class="boton boton-principal"
+      href="mailto:dijendrakumadas@gmail.com"
+      style="margin-top: 24px;"
+    >
+      Escribir por correo →
+    </a>
+
+    <p style="margin-top: 20px;">
+      <a href="mailto:dijendrakumadas@gmail.com">
+        dijendrakumadas@gmail.com
+      </a>
+    </p>
+
+    <p>Víctor Alfonso Cruz Amortegui · Bogotá, Colombia.</p>
+  </div>
+</section>
+  </main>
+
+   <footer class="pie-pagina">
+  <div class="contenedor pie-contenido">
+    <a class="logo" href="index.html">
+      Tiquetes<span>Viajeros</span>
+    </a>
+
+    <p>Guía independiente de rutas y pasajes de bus en Colombia.</p>
+
+    <p>
+      Víctor Alfonso Cruz Amortegui · Bogotá, Colombia.
+    </p>
+
+    <p>
+      <a href="mailto:dijendrakumadas@gmail.com">
+        dijendrakumadas@gmail.com
+      </a>
+    </p>
+
+     <p class="legal-pendiente">
+  Cotizaciones sujetas a confirmación de tarifa y disponibilidad.
+  Este sitio no recibe pagos ni emite tiquetes.
+</p>
+
+    <a href="privacidad.html">Política de privacidad</a>
+    <a href="terminos.html">Términos y condiciones</a>
+    <a href="cookies.html">Política de cookies</a>
+
+  </div>
+</footer>
+</body>
+</html>
