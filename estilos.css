@@ -966,3 +966,43 @@ h1 span {
     height: 40px;
   }
 }
+.foto-responsable {
+  max-width: 360px;
+  margin: 28px 0 0;
+}
+
+.foto-responsable img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 22px;
+}
+
+.foto-responsable figcaption {
+  margin-top: 12px;
+  color: var(--gris);
+  font-size: 12px;
+}
+.foto-responsable {
+  width: min(220px, 100%);
+  margin: 24px auto;
+  text-align: center;
+}
+
+.foto-responsable img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.foto-responsable figcaption {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
