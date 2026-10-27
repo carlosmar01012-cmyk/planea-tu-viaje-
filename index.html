@@ -3,341 +3,694 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta
     name="description"
-    content="Explora rutas de bus por Colombia y prepara tu próximo viaje."
+    content="Prepara una cotización de vuelos nacionales e internacionales con tu ruta, fechas y preferencias."
   >
-  <title>planea tu viaje | Viaja por Colombia</title>
+
+  <title>Tu Guía de Vuelos | Cotiza tu próximo vuelo</title>
+
   <link rel="stylesheet" href="estilos.css">
-  <script src="script.js"v=3 defer></script>
+  <script src="script.js" defer></script>
 </head>
 
 <body>
-  <header class="encabezado">
-    <div class="contenedor navegacion">
-      <a class="logo" href="index.html" aria-label="Pasajes en Bus, inicio">
-  <span class="logo-icono" aria-hidden="true">
-    <svg
-      viewBox="0 0 32 32"
-      width="28"
-      height="28"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="1.8"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+  <header class="cabecera">
+    <a
+      href="index.html"
+      class="marca"
+      aria-label="Tu Guía de Vuelos, inicio"
     >
-      <rect x="7" y="4" width="18" height="22" rx="4"/>
-      <path d="M8 15h16M16 7v8M12 8h8"/>
-      <path d="M5 10v6M27 10v6"/>
-      <circle cx="11.5" cy="21" r="1" fill="currentColor"/>
-      <circle cx="20.5" cy="21" r="1" fill="currentColor"/>
-      <path d="M10 26v3M22 26v3"/>
-    </svg>
-  </span>
-   <span class="logo-nombre">
-    planea<span>tu viaje</span>
-   </span>
-</a>
+      <b class="logo-avion" aria-hidden="true">
+  <svg
+    viewBox="0 0 24 24"
+    width="27"
+    height="27"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M22 2 9.5 14.5"/>
+    <path d="m22 2-8 20-4.5-7.5L2 10Z"/>
+  </svg>
+</b>
+      <span>
+        tu guía
+        <small>de vuelos</small>
+      </span>
+    </a>
 
-      <nav aria-label="Planea tu Viaje, inicio">
-        <a href="#inicio">Inicio</a>
-        <a href="#buscador">Buscar pasajes</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#nosotros">Quiénes somos</a>
-        <a class="enlace-contacto" href="#contacto">Contacto</a>
-      </nav>
-    </div>
+    <button
+      id="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu"
+    >
+      Menú ☰
+    </button>
+
+    <nav id="menu" aria-label="Navegación principal">
+      <a href="#destinos">Destinos</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#nosotros">Quiénes somos</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#cotizar" class="contorno">Cotiza tu vuelo ↗</a>
+    </nav>
   </header>
 
   <main>
-    <section class="hero" id="inicio">
-      <div class="contenedor hero-contenido">
-        <div class="hero-texto">
-          <span class="etiqueta">TU PRÓXIMA HISTORIA EMPIEZA EN LA RUTA</span>
-          <h1>Colombia te espera.<br><span>Vamos a recorrerla.</span></h1>
-           <p>
-  Te ayudamos a explorar rutas de bus por Colombia
-  y a encontrar información para planear tu próximo viaje.
-  Elige tu origen y destino para empezar.
-</p>
-          <a class="boton boton-principal" href="#buscador">
-            Encuentra tu próxima ruta →
-          </a>
+    <!-- PORTADA -->
+    <section class="hero">
+      <img
+        src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=2200&q=85"
+        alt="Lago entre montañas y un pueblo junto al agua"
+        fetchpriority="high"
+      >
 
-          <div class="hero-detalles">
-            <span>Ciudades colombianas</span>
-            <span>Precios en pesos</span>
-            <span>Todo en un solo lugar</span>
-          </div>
-        </div>
+      <div class="sombra"></div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <span class="visual-sol"></span>
-          <span class="visual-montana montana-fondo"></span>
-          <span class="visual-montana montana-frente"></span>
-          <div class="tarjeta-ruta">
-            <span>UN VIAJE, MUCHAS HISTORIAS</span>
-            <strong>Bogotá → Medellín</strong>
-            <span>Descubre Colombia por carretera</span>
-          </div>
-        </div>
+      <div class="hero-texto">
+        <span class="ceja">
+          UN REENCUENTRO. UNA ESCAPADA. UN NUEVO COMIENZO.
+        </span>
+
+        <h1>
+          Tu próxima historia<br>
+          empieza <em>en el aire.</em>
+        </h1>
+
+        <p>
+          Hay viajes que llevas tiempo imaginando.<br>
+          Cuéntanos a dónde quieres volar.
+        </p>
+
+        <a href="#cotizar" class="boton coral">
+          Vamos a planearlo ↗
+        </a>
+      </div>
+
+      <div class="hero-pie">
+        <span>MENOS RUTINA. MÁS MUNDO.</span>
+        <span>01 — Encuentra tu próximo horizonte</span>
       </div>
     </section>
 
-    <section class="seccion-buscador" id="buscador" aria-labelledby="titulo-buscador">
-      <div class="contenedor">
-        <form class="buscador" id="formulario-busqueda">
-          <div class="buscador-encabezado">
-            <div>
-              <span class="etiqueta">EMPIEZA AQUÍ</span>
-              <h2 id="titulo-buscador">¿A dónde quieres ir?</h2>
-            </div>
-            <span class="aviso-demo">Versión de demostración</span>
-          </div>
-
-          <div class="buscador-campos">
-            <div class="campo">
-              <label for="origen">Origen</label>
-              <select id="origen" name="origen" required>
-                <option value="">¿Desde dónde sales?</option>
-                <option>Bogotá</option>
-                <option>Medellín</option>
-                <option>Cali</option>
-                <option>Cartagena</option>
-                <option>Barranquilla</option>
-                <option>Bucaramanga</option>
-                <option>Pereira</option>
-                <option>Santa Marta</option>
-              </select>
-            </div>
-
-            <div class="campo">
-              <label for="destino">Destino</label>
-              <select id="destino" name="destino" required>
-                <option value="">¿A dónde vamos?</option>
-                <option>Bogotá</option>
-                <option>Medellín</option>
-                <option>Cali</option>
-                <option>Cartagena</option>
-                <option>Barranquilla</option>
-                <option>Bucaramanga</option>
-                <option>Pereira</option>
-                <option>Santa Marta</option>
-              </select>
-            </div>
-
-            <div class="campo">
-              <label for="fecha-ida">Fecha de ida</label>
-              <input type="date" id="fecha-ida" name="fechaIda" required>
-            </div>
-
-            <div class="campo">
-              <label for="fecha-vuelta">Regreso <span>(opcional)</span></label>
-              <input type="date" id="fecha-vuelta" name="fechaVuelta">
-            </div>
-
-            <button class="boton boton-principal" type="submit">
-              Buscar pasajes →
-            </button>
-          </div>
-
-          <p class="nota-buscador">
-            Explora el funcionamiento con horarios y precios de ejemplo.
-            Esta versión no realiza reservas ni cobros.
-          </p>
-          <p id="mensaje-busqueda" role="status" aria-live="polite"></p>
-        </form>
+    <!-- RUTA DEL VIAJE -->
+    <section class="busqueda contenedor" id="cotizar">
+      <div class="barra">
+        <h2>¿Cuál es tu próximo destino?</h2>
+        <span>Cotización sujeta a confirmación</span>
       </div>
-    </section>
 
-    <section class="seccion destinos" aria-labelledby="titulo-destinos">
-      <div class="contenedor">
-        <span class="etiqueta">INSPIRACIÓN PARA TU PRÓXIMA ESCAPADA</span>
-        <h2 id="titulo-destinos">Un destino para cada plan.</h2>
-        <p class="descripcion-seccion">
-          Montañas, cultura o brisa del mar. Tú eliges el camino.
-        </p>
+      <form id="ruta">
+        <fieldset>
+          <legend class="oculto">Tipo de viaje</legend>
 
-        <div class="rejilla-destinos">
-          <article class="tarjeta-destino destino-medellin">
-            <span class="destino-numero">01 / ANTIOQUIA</span>
-            <div>
-              <h3>Medellín</h3>
-              <p>Montañas, cultura y nuevos encuentros.</p>
-              <a href="#buscador">Explorar ruta <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
+          <label>
+            <input
+              type="radio"
+              name="tipo"
+              value="vuelta"
+              checked
+            >
+            Ida y vuelta
+          </label>
 
-          <article class="tarjeta-destino destino-cartagena">
-            <span class="destino-numero">02 / BOLÍVAR</span>
-            <div>
-              <h3>Cartagena</h3>
-              <p>Calles llenas de color y aire del Caribe.</p>
-              <a href="#buscador">Explorar ruta <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
+          <label>
+            <input type="radio" name="tipo" value="ida">
+            Solo ida
+          </label>
+        </fieldset>
 
-          <article class="tarjeta-destino destino-bogota">
-            <span class="destino-numero">03 / BOGOTÁ D. C.</span>
-            <div>
-              <h3>Bogotá</h3>
-              <p>Una capital con mucho por descubrir.</p>
-              <a href="#buscador">Explorar ruta <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
+        <div class="campos-ruta">
+          <label>
+            Sales desde
+            <input
+              name="origen"
+              list="ciudades"
+              placeholder="Ciudad o aeropuerto"
+              maxlength="100"
+              required
+            >
+          </label>
+
+          <button
+            type="button"
+            id="intercambiar"
+            aria-label="Intercambiar origen y destino"
+          >
+            ⇄
+          </button>
+
+          <label>
+            Quieres llegar a
+            <input
+              name="destino"
+              list="ciudades"
+              placeholder="Tu próximo horizonte"
+              maxlength="100"
+              required
+            >
+          </label>
+
+          <label>
+            Ida
+            <input name="ida" type="date" required>
+          </label>
+
+          <label id="campo-regreso">
+            Regreso
+            <input name="regreso" type="date" required>
+          </label>
+
+          <label>
+            Viajeros
+            <input
+              name="viajeros"
+              type="number"
+              min="1"
+              max="20"
+              value="1"
+              required
+            >
+          </label>
+
+          <button class="boton azul" type="submit">
+            Continuar ↗
+          </button>
         </div>
-      </div>
+
+        <p class="nota">
+          Solicitar una cotización no reserva un vuelo.
+          Tarifas, horarios y condiciones se confirman antes de comprar.
+        </p>
+
+        <p id="error" role="status"></p>
+      </form>
+
+      <datalist id="ciudades">
+        <option value="Bogotá (BOG)">
+        <option value="Medellín (MDE)">
+        <option value="Barranquilla (BAQ)">
+        <option value="Cali (CLO)">
+        <option value="Cartagena (CTG)">
+        <option value="Santa Marta (SMR)">
+        <option value="San Andrés (ADZ)">
+        <option value="Madrid (MAD)">
+        <option value="Miami (MIA)">
+        <option value="Lima (LIM)">
+        <option value="Ciudad de México (MEX)">
+      </datalist>
     </section>
 
-    <section class="seccion funcionamiento" id="como-funciona">
-  <div class="contenedor">
-    <span class="etiqueta">PLANEA TU PRÓXIMO VIAJE</span>
-    <h2>Solicita tu cotización en tres pasos.</h2>
-
-    <div class="rejilla-pasos">
-      <article class="paso">
-        <span class="paso-numero">01</span>
-        <h3>Elige tu ruta</h3>
-        <p>
-          Selecciona tu ciudad de origen, destino y fecha de ida.
-          Si necesitas regresar, indica también la fecha de vuelta.
-        </p>
-      </article>
-
-      <article class="paso">
-        <span class="paso-numero">02</span>
-        <h3>Completa tus datos</h3>
-        <p>
-          Indica tu nombre, cédula, correo, teléfono y cantidad
-          de pasajeros. Lee la política de privacidad y autoriza
-          el tratamiento de tus datos para atender la solicitud.
-        </p>
-      </article>
-
-      <article class="paso">
-        <span class="paso-numero">03</span>
-        <h3>Envía tu solicitud</h3>
-        <p>
-          Pulsa “Preparar solicitud por correo”, revisa el mensaje
-          y envíalo desde tu aplicación de correo. Te contactaremos
-          para dar seguimiento a tu consulta.
-        </p>
-      </article>
-    </div>
-
-    <p style="margin-top: 32px; color: #d0dcd3; font-size: 13px;">
-      Enviar la solicitud no confirma una reserva.
-      Las tarifas y la disponibilidad están sujetas a confirmación.
-      Este sitio no recibe pagos ni emite tiquetes.
-    </p>
-  </div>
-</section>
-     <section class="seccion nosotros" id="nosotros">
-        <figure class="foto-responsable">
-  <img
-    src="imagenes/responsable-victor.jpg"
-    alt="Víctor Alfonso Cruz Amortegui, responsable de Planea tu Viaje"
-    width="600"
-    height="750"
-    loading="lazy"
-  >
-  <figcaption>
-    Víctor Alfonso Cruz Amortegui<br>
-    Responsable de Planea tu Viaje
-  </figcaption>
-</figure>
-  <div class="contenedor nosotros-contenido">
-    <div>
-      <span class="etiqueta">QUIÉNES SOMOS</span>
-      <h2>Una guía para encontrar tu próximo camino.</h2>
-    </div>
-
-    <div>
-      <p>
-        planea tu viaje es una guía independiente creada para
-        ayudarte a buscar pasajes de bus hacia los destinos que
-        necesitas en Colombia. Queremos facilitar tu búsqueda
-        con información clara para que puedas planear tu viaje.
-      </p>
-
-      <p>
-        Este proyecto está a cargo de Víctor Alfonso Cruz Amortegui,
-        en Bogotá, Colombia. Nuestro propósito es orientarte
-        al explorar rutas y opciones de transporte.
-      </p>
-
-      <p>
-  Puedes enviarnos una solicitud de cotización indicando
-  tu ruta y las fechas del viaje. El envío no confirma una
-  reserva. La tarifa, disponibilidad y condiciones del servicio
-  deben confirmarse antes de cualquier compra.
-  Este sitio no recibe pagos ni emite tiquetes.
-</p>
-    </div>
-  </div>
-</section>
-
-     <section class="seccion contacto" id="contacto">
-  <div class="contenedor contacto-contenido">
-    <span class="etiqueta">CONTACTO</span>
-    <h2>Hablemos de tu próximo viaje.</h2>
-
-    <p>
-      ¿Tienes preguntas sobre cómo solicitar una cotización?
-      Escríbenos indicando tu origen, destino y fecha del viaje.
-    </p>
-
-    <a
-      class="boton boton-principal"
-      href="mailto:dijendrakumadas@gmail.com"
-      style="margin-top: 24px;"
+    <!-- FORMULARIO DE COTIZACIÓN -->
+    <section
+      class="solicitud contenedor"
+      id="solicitud"
+      aria-labelledby="titulo-solicitud"
+      hidden
     >
-      Escribir por correo →
-    </a>
+      <div>
+        <span class="ceja">DALE FORMA A TU VIAJE</span>
 
-    <p style="margin-top: 20px;">
-      <a href="mailto:dijendrakumadas@gmail.com">
-        dijendrakumadas@gmail.com
-      </a>
-    </p>
+        <h2 id="titulo-solicitud" tabindex="-1">
+          El siguiente paso<br>
+          está en tus manos.
+        </h2>
 
-    <p>Víctor Alfonso Cruz Amortegui · Bogotá, Colombia.</p>
-  </div>
-</section>
+        <p id="resumen"></p>
+
+        <p>
+          Prepararemos un correo para que lo revises
+          y lo envíes a nuestro canal de atención.
+        </p>
+
+        <p class="recuadro">
+          No pedimos datos bancarios ni fotografías
+          de documentos para cotizar.
+        </p>
+      </div>
+
+      <form id="datos">
+        <div class="datos-grid">
+          <label>
+            Nombre completo
+            <input
+              name="nombre"
+              autocomplete="name"
+              maxlength="120"
+              required
+            >
+          </label>
+
+          <label>
+            Correo electrónico
+            <input
+              name="correo"
+              type="email"
+              autocomplete="email"
+              maxlength="254"
+              required
+            >
+          </label>
+
+          <label>
+            Teléfono de contacto
+            <input
+              name="telefono"
+              type="tel"
+              autocomplete="tel"
+              minlength="7"
+              maxlength="25"
+              required
+            >
+          </label>
+
+          <label>
+            Clase preferida
+            <select name="clase">
+              <option>Económica</option>
+              <option>Premium económica</option>
+              <option>Ejecutiva</option>
+              <option>Sin preferencia</option>
+            </select>
+          </label>
+
+          <label>
+            Equipaje
+            <select name="equipaje">
+              <option>Solo equipaje de mano</option>
+              <option>Con maleta en bodega</option>
+              <option>Quiero conocer las opciones</option>
+            </select>
+          </label>
+
+          <label>
+            Fechas
+            <select name="flexibilidad">
+              <option>Fechas exactas</option>
+              <option>Flexibilidad de 1 a 3 días</option>
+              <option>Fechas flexibles</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          ¿Algo más sobre tu viaje?
+          <textarea
+            name="notas"
+            rows="3"
+            maxlength="600"
+            placeholder="Preferencias de escalas o edades de menores. No incluyas documentos ni información sensible."
+          ></textarea>
+        </label>
+
+        <label class="consentimiento">
+          <input name="autorizacion" type="checkbox" required>
+
+          <span>
+            Autorizo a Andry Jiseth Méndez Urriago a utilizar
+            mis datos de contacto y del viaje para atender
+            y dar seguimiento a esta cotización, conforme a la
+            <a href="privacidad.html">
+              Política de Privacidad y Tratamiento de Datos
+            </a>.
+            Esta autorización no incluye publicidad.
+          </span>
+        </label>
+
+        <button type="submit" class="boton azul">
+          Preparar solicitud por correo ↗
+        </button>
+
+        <p class="nota">
+          Se abrirá tu aplicación de correo.
+          Revisa y envía el mensaje desde allí.
+          El sitio no guarda el formulario ni confirma su recepción.
+        </p>
+
+        <p id="estado" role="status" aria-live="polite"></p>
+
+        <div id="alternativa" hidden>
+          <button
+            id="copiar"
+            type="button"
+            class="boton secundario"
+          >
+            Copiar solicitud
+          </button>
+
+          <p class="nota">
+            Si no se abre tu correo, copia el resumen
+            y envíalo a Apalestina939@gmail.com.
+          </p>
+
+          <pre id="texto-resumen"></pre>
+        </div>
+      </form>
+    </section>
+
+    <!-- DESTINOS -->
+    <section class="contenedor destinos" id="destinos">
+      <div class="titulo-fila">
+        <div>
+          <span class="ceja">UN POCO DE INSPIRACIÓN</span>
+          <h2>Hay un mundo<br>esperándote.</h2>
+        </div>
+
+        <p>
+          Para cambiar de aire no necesitas una excusa.<br>
+          Solo un lugar por donde empezar.
+        </p>
+      </div>
+
+      <div class="destinos-grid">
+        <a
+          class="destino grande"
+          href="#cotizar"
+          data-destino="Cartagena (CTG)"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1000&q=85"
+            alt="Cartagena y su costa al caer la tarde"
+            loading="lazy"
+          >
+
+          <span class="velo"></span>
+
+          <div>
+            <small>COLOMBIA · CARIBE</small>
+            <h3>Un sí a la brisa.</h3>
+            <span>Cotizar hacia Cartagena ↗</span>
+          </div>
+        </a>
+
+        <a
+          class="destino"
+          href="#cotizar"
+          data-destino="Madrid (MAD)"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1543783207-ec64e4d95325?auto=format&fit=crop&w=800&q=85"
+            alt="Arquitectura del centro de Madrid"
+            loading="lazy"
+          >
+
+          <span class="velo"></span>
+
+          <div>
+            <small>ESPAÑA · EUROPA</small>
+            <h3>Piérdete un poquito.</h3>
+            <span>Cotizar hacia Madrid ↗</span>
+          </div>
+        </a>
+
+        <a
+          class="destino"
+          href="#cotizar"
+          data-destino="Miami (MIA)"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1514214246283-d427a95c5d2f?auto=format&fit=crop&w=800&q=85"
+            alt="Panorama de Miami junto al agua"
+            loading="lazy"
+          >
+
+          <span class="velo"></span>
+
+          <div>
+            <small>ESTADOS UNIDOS · FLORIDA</small>
+            <h3>En modo vacaciones.</h3>
+            <span>Cotizar hacia Miami ↗</span>
+          </div>
+        </a>
+      </div>
+
+      <p class="nota">
+        Destinos para inspirarte. No representan tarifas promocionales
+        ni disponibilidad confirmada.
+      </p>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="proceso" id="como-funciona">
+      <div class="contenedor dos-columnas">
+        <div>
+          <span class="ceja">DE LA IDEA AL ITINERARIO</span>
+
+          <h2>
+            El primer paso<br>
+            es elegir <em>irse.</em>
+          </h2>
+
+          <p>
+            Reúne los detalles del viaje en una sola solicitud
+            y consulta las condiciones antes de reservar.
+          </p>
+
+          <a href="#cotizar" class="subrayado">
+            Empieza por tu ruta ↗
+          </a>
+        </div>
+
+        <ol>
+          <li>
+            <b>01</b>
+            <div>
+              <h3>Imagina tu viaje</h3>
+              <p>
+                Indica origen, destino, fechas y cantidad de viajeros.
+                Elige ida y vuelta o solo ida.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <b>02</b>
+            <div>
+              <h3>Cuéntanos los detalles</h3>
+              <p>
+                Completa tu contacto, clase, equipaje y flexibilidad.
+                Revisa y envía la solicitud desde tu correo.
+              </p>
+            </div>
+          </li>
+
+          <li>
+            <b>03</b>
+            <div>
+              <h3>Confirma antes de reservar</h3>
+              <p>
+                Consulta precio total, escalas, horarios y condiciones
+                con quien atienda tu cotización.
+                La solicitud no emite un tiquete.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- QUIÉNES SOMOS -->
+    <section
+      class="contenedor nosotros dos-columnas"
+      id="nosotros"
+    >
+      <div class="foto-editorial">
+        <img
+          src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1100&q=85"
+          alt="Ala de avión sobre las nubes al atardecer"
+          loading="lazy"
+        >
+
+        <span>CAMBIA DE PERSPECTIVA.</span>
+      </div>
+
+      <div>
+        <span class="ceja">QUIÉNES SOMOS</span>
+
+        <h2>
+          El viaje empieza<br>
+          mucho antes<br>
+          del despegue.
+        </h2>
+
+        <p>
+          Tu Guía de Vuelos es un proyecto independiente a cargo
+          de Andry Jiseth Méndez Urriago, en Barranquilla,
+          creado para facilitar la preparación de solicitudes
+          de cotización de vuelos.
+        </p>
+
+        <p>
+          Reunimos tu ruta, fechas y preferencias para que puedas
+          explicar con claridad qué necesitas. Cada tarifa,
+          disponibilidad y condición debe confirmarse antes
+          de cualquier compra.
+        </p>
+
+        <figure class="responsable">
+          <div class="retrato" id="espacio-foto">
+            <img
+              src="imagenes/responsable-andry.png"
+              alt="Andry Jiseth Méndez Urriago, responsable de Tu Guía de Vuelos"
+              hidden
+            >
+
+            <span class="foto-pendiente">
+              <span aria-hidden="true">＋</span>
+              Espacio para la foto de Andry
+            </span>
+          </div>
+
+          <figcaption>
+            <strong>Andry Jiseth Méndez Urriago</strong>
+            <span>Responsable del proyecto · Barranquilla</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="contenedor preguntas dos-columnas">
+      <div>
+        <span class="ceja">ANTES DE DESPEGAR</span>
+        <h2>Respuestas para<br>viajar con claridad.</h2>
+      </div>
+
+      <div>
+        <details>
+          <summary>¿Enviar la solicitud reserva mi vuelo?</summary>
+          <p>
+            No. No bloquea cupos, fija un precio ni emite tiquetes.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿La tarifa incluye equipaje?</summary>
+          <p>
+            Depende de la tarifa que se cotice.
+            Indica tus necesidades y confirma medidas,
+            límites y cargos antes de comprar.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Puedo pedir fechas flexibles?</summary>
+          <p>
+            Sí. Selecciona la flexibilidad en el formulario
+            y agrega tus preferencias en las observaciones.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Puedo pagar desde esta página?</summary>
+          <p>
+            No. El sitio no procesa pagos ni solicita tarjetas.
+            Cualquier compra requiere condiciones verificadas
+            por separado.
+          </p>
+        </details>
+
+        <details>
+          <summary>¿Necesito pasaporte o visa?</summary>
+          <p>
+            Depende del destino, nacionalidad y escalas.
+            Comprueba los requisitos con las autoridades oficiales
+            antes de comprar o viajar.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="cierre" id="contacto">
+      <div class="contenedor">
+        <span class="ceja">
+          HABLEMOS DE TU PRÓXIMO HORIZONTE
+        </span>
+
+        <h2>Hazle espacio<br>a una nueva historia.</h2>
+
+        <a href="#cotizar" class="boton coral">
+          Cotiza tu próximo vuelo ↗
+        </a>
+
+        <p class="contacto-mail">
+          <a href="mailto:Apalestina939@gmail.com">
+            Apalestina939@gmail.com
+          </a>
+        </p>
+
+        <p class="direccion">
+          Andry Jiseth Méndez Urriago · Avenida Murillo #4354,
+          Barranquilla, Colombia.
+        </p>
+      </div>
+    </section>
   </main>
 
-   <footer class="pie-pagina">
-  <div class="contenedor pie-contenido">
-    <a class="logo" href="index.html">
-      Tiquetes<span>Viajeros</span>
-    </a>
-
-    <p>Guía independiente de rutas y pasajes de bus en Colombia.</p>
-
-    <p>
-      Víctor Alfonso Cruz Amortegui · Bogotá, Colombia.
-    </p>
-
-    <p>
-      <a href="mailto:dijendrakumadas@gmail.com">
-        dijendrakumadas@gmail.com
+  <!-- PIE DE PÁGINA -->
+  <footer class="contenedor">
+    <div class="footer-arriba">
+      <a class="marca" href="index.html">
+        <b aria-hidden="true">↗</b>
+        <span>
+          tu guía
+          <small>de vuelos</small>
+        </span>
       </a>
-    </p>
 
-     <p class="legal-pendiente">
-  Cotizaciones sujetas a confirmación de tarifa y disponibilidad.
-  Este sitio no recibe pagos ni emite tiquetes.
-</p>
-<p>
-  Teléfono:
-  <a href="tel:3001236025">3001236025</a>
-</p>
-    <a href="privacidad.html">Política de privacidad</a>
-    <a href="terminos.html">Términos y condiciones</a>
-    <a href="cookies.html">Política de cookies</a>
+      <p>Tu próxima historia despega aquí.</p>
 
-  </div>
-</footer>
+      <a href="#cotizar">Volver al buscador ↑</a>
+    </div>
+
+    <div class="datos-responsable">
+      <p>
+        <strong>
+          Responsable: Andry Jiseth Méndez Urriago
+        </strong>
+      </p>
+
+      <p>Cédula de ciudadanía: 1.077.846.295</p>
+
+      <p>Avenida Murillo #4354 · Barranquilla, Colombia.</p>
+
+      <p>
+        <a href="mailto:Apalestina939@gmail.com">
+          Apalestina939@gmail.com
+        </a>
+      </p>
+
+      <p>
+        Cotizaciones sujetas a confirmación de tarifa y disponibilidad.
+        Este sitio no recibe pagos ni emite tiquetes.
+      </p>
+    </div>
+
+    <div class="legales">
+      <a href="privacidad.html">
+        Privacidad y tratamiento de datos
+      </a>
+
+      <a href="terminos.html">Términos y condiciones</a>
+
+      <a href="cookies.html">Cookies</a>
+
+      <button id="abrir-privacidad" type="button">
+        Preferencias de privacidad
+      </button>
+    </div>
+
+    <div class="footer-abajo">
+      <span>Responsable: Andry Jiseth Méndez Urriago.</span>
+      <span>Cotizaciones sujetas a confirmación.</span>
+      <span>No recibe pagos ni emite tiquetes.</span>
+    </div>
+  </footer>
 </body>
 </html>
